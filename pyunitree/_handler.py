@@ -7,7 +7,8 @@ from multiprocessing import Process, Manager
 
 
 class RobotHandler(LowLevelParser):
-    """"""
+    """Creating the Robot Handler.
+       to bind the specific interface through """
 
     def __init__(self, update_rate=1000):
         LowLevelParser.__init__(self)
@@ -27,7 +28,7 @@ class RobotHandler(LowLevelParser):
         self._handler_process = Process(target=self.__handler)
 
     def __copy_state(self):
-
+        # copy the internal states to shared memory
         self.state.joint_angles = self.joint_angles
         self.state.joint_speed = self.joint_speed
         self.state.joint_torques = self.joint_torques
@@ -42,14 +43,17 @@ class RobotHandler(LowLevelParser):
 
 
     def __update_state(self):
+        # update state based on incoming data
         self.__receive_state()
         self.__copy_state()
 
     def __receive_state(self):
+        # receive the low state and parse
         low_state = self.receiver()
         self.parse_state(low_state)
 
     def __send_command(self, command):
+        # send low level command through transmitter
         self.transmitter(command)
 
     def set_transmitter(self, transmitter):
@@ -58,6 +62,10 @@ class RobotHandler(LowLevelParser):
     def set_receiver(self, receiver):
         self.receiver = receiver
 
+    def bind_interface(self, receiver, transmitter):
+        self.set_transmitter(transmitter)
+        self.set_receiver(receiver)
+    
     def __del__(self):
         self.stop(output=True)
 
