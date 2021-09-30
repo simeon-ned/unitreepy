@@ -7,7 +7,7 @@ By providing minimalistic easy to use interface to Unitree legged SDK as well as
 such as forward kinematics, initialization motion and etc.
 
 The project consist of following parts:
-- [The Interface](#legged-sdk): Provide the interface to C++ legged sdk library to send both high and low level commands and recive espective replies. This is done by modifying pybindings from the [motion imitation project](https://github.com/google-research/motion_imitation/tree/master/third_party/unitree_legged_sdk)   
+- [The Interface](#the-interface): Provide the interface to C++ legged sdk library to send both high and low level commands and recive espective replies. This is done by modifying pybindings from the [motion imitation project](https://github.com/google-research/motion_imitation/tree/master/third_party/unitree_legged_sdk)   
 - [The Parsers](#parsers): Are used to parse the robots and wireless remote states to intuitive python structures 
   * [High Level Parser](#high_level_parser): parse the *high* states
   * [Low Level Parser](#high_level_parser): parse the *low* states  
@@ -35,5 +35,21 @@ Then copy the resulting *.so* file to the root of repository and install the pac
 ```sh
 sudo python3 setup.py develop
 ```
+## The Basic Usage 
 
+### The Interface
+You may use this package to interface directly with robot without any additional parsers.
 
+Sending the zero command in high level interface and printing the ticker:
+
+```python
+from pyunitree.legged_sdk import HighLevelInterface
+import numpy as np
+interface = HighLevelInterface()
+command = np.zeros(10)
+interface.send(command)
+state = interface.receive()
+print(state.tick)
+```
+
+#### The commands and replies
