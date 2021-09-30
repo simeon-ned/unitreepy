@@ -10,11 +10,11 @@ such as forward kinematics, setting down motion and etc.
 The project consist of following parts:
 
 - [The Interface](#the-interface): The interface to C++ legged sdk library to send both high and low level commands and recive espective replies. This is done by modifying pybindings from the [motion imitation project](https://github.com/google-research/motion_imitation/tree/master/third_party/unitree_legged_sdk)
-- [The Parsers](#parsers): Are used to parse the robots and wireless remote states to intuitive python structures
-  - [High Level Parser](#high_level_parser): parse the *high* states
-  - [Low Level Parser](#hiuh_level_parser): parse the *low* states  
-  - [Remote Parser](#low_level_parser) parse the commands from the wireless remote
-- [The Robot Handler](#handler): Provide the object that can be used to generate commands based on desired robot behavior i.e desired torques, positions in joints etc. Update the actual state of the robot and initialize the specific While being bind to the chosen interface will send and receive messages with predefined update rate.
+- [The Parsers](#the-parsers): Are used to parse the robots and wireless remote states to intuitive python structures
+  - [High Level Parser](#high-level-parser): parse the *high* states
+  - [Low Level Parser](#low-level-parser): parse the *low* states  
+  - [Remote Parser](#remote-parser) parse the commands from the wireless remote
+- [The Robot Handler](#the-robot-handler): Provide the object that can be used to generate commands based on desired robot behavior i.e desired torques, positions in joints etc. Update the actual state of the robot and initialize the specific While being bind to the chosen interface will send and receive messages with predefined update rate.
 
 ### Installing the package
 
@@ -62,11 +62,11 @@ print(state.tick)
 
 ### The Parsers
 
-#### High States
+#### High Level Parser
 <!-- ADD TABLE WITH MAPPING BETWEEN REPLIES AND ASSOCIATED PYTHON OBJECTS-->
-#### Low States
+#### Low Level Parser
 
-#### Wireless Remote
+#### Remote Parser
 
 ### The Robot Handler
 
