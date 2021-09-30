@@ -1,0 +1,38 @@
+ The A1 Parser -> parse the state and transform:
+    ✔ Implement the low level parser @done(21-09-24 15:44)
+    ✔ Separate low and high level parsers @done(21-09-24 15:44)
+    ☐ Implement the high level parser
+    ☐ Implement foot calculations and add them to parser 
+    ☐ Write the DOC string
+    ☐ Think how to use initialization of states properly
+
+The RobotHandler:
+    ✔ Create a robot class @done(21-09-29 09:30)
+    ✔ Implement the down and stand up motion @done(21-09-29 09:30)
+    ☐ Write the doc string
+    ☐ Rewrite initialization
+    ☐ Implement online adjustments of gains and update rate
+    ☐ Terminate process safely
+    ✔ Add timer to process @done(21-09-29 21:24)
+    ☐ Implement reciver/transmitter interface between the processes 
+    ☐ Decide on what to use process or thread. 
+
+
+The Hardware Interface:
+    ☐ Bind the process with specific frequancy to send and recive commands  
+
+Gazebo Interface:
+    ☐ 
+
+PyBullet interface:
+    ☐ 
+
+The Modeling:
+    ☐ Kinematics:
+        ✔ Position of foot with respect to body @done(21-09-26 16:15)
+        ✔ Jacobians and velocity of foot with respect to body @done(21-09-26 16:15)
+        ✔ Rotation matrix of foot @done(21-09-26 16:16)
+        ☐ Validate the foot velocities by numerically differentiating positions
+    ☐ Dynamics:
+        ☐ Centroidal dynamics
+
