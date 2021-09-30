@@ -12,7 +12,7 @@ The project consist of following parts:
   * [High Level Parser](#high_level_parser): parse the *high* states
   * [Low Level Parser](#high_level_parser): parse the *low* states  
   * [Remote Parser](#low_level_parser) parse the commands from the wireless remote
-- [The Robot Handler](#handler): Provide the object that can be used to generate commands based on desired robot behaviour i.e desired torques, positions in joints etc. Update the actual state of the robot and initialize the specific While being bind to the choosen interface will send and recive messages with predefined rate.
+- [The Robot Handler](#handler): Provide the object that can be used to generate commands based on desired robot behaviour i.e desired torques, positions in joints etc. Update the actual state of the robot and initialize the specific While being bind to the choosen interface will send and recive messages with predefined rate. 
 
 
 ### Installing the package
@@ -52,4 +52,17 @@ state = interface.receive()
 print(state.tick)
 ```
 
-#### The commands and replies
+#### The structure of commands and replies
+<!-- ADD TABLE WITH MAPPING BETWWEN REPLIES AND COMMANDS -->
+
+### The Parsers
+#### High States
+<!-- ADD TABLE WITH MAPPING BETWEEN REPLIES AND ASSOCIATED PYTHON OBJECTS-->
+#### Low States
+#### Wireless Remote 
+
+### The Robot Handler
+#### Binding to hadware 
+#### Runing the Robot in High Level Mode
+#### Runiing the Robot in Low Level Mode
+
