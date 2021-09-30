@@ -64,5 +64,5 @@ print(state.tick)
 ### The Robot Handler
 #### Binding to hadware 
 #### Runing the Robot in High Level Mode
-#### Runiing the Robot in Low Level Mode
+#### Runing the Robot in Low Level Mode
 
