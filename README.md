@@ -45,20 +45,40 @@ sudo python3 setup.py develop
 
 You may use this package to interface directly with robot without any additional parsers.
 
-Sending the zero command in high level interface and printing the ticker:
+#### The structure of commands and replies
 
+The High Level Command is orginized as follows:
+| Index | Name | Description |
+| --- | --- | --- |
+| COM[0] | Mode | 0 - idle, 1 - forced stand, 2 - walk continuously
+| COM[1] | Forward Speed  | forward/backward speed: (-1,1) : (-0.7,1) (m/s)
+| COM[2] | Side Speed   | left/right: (-1,1) :  (-0.4,0.4) (m/s)
+| COM[3] | Rotation Speed   | clockwise/anticlockwise: (-1,1) : (-120,120) (deg/s)
+| COM[4] | Body Height   | body height: (-1,1) : (0.3,0.45) (m)
+| COM[5] | Foot Height   | foot height while walking : unavailable in this version of SDK
+| COM[6] | Yaw   | desired yaw angle: (-1,1) : (-28,28) (deg)
+| COM[7] | Pitch   | desired pitch angle: (-1,1) : (-20,20) (deg)
+| COM[8] | Roll   | desired roll angle:  (-1,1) : (-20,20) (deg)
+| COM[9] | RESERVED  | reserved bytes in command
+
+For instance the following code will require the robot to track the pitch of 
+20 degrees for 5 seconds and printout the result:
 ```python
 from pyunitree.legged_sdk import HighLevelInterface
-import numpy as np
-interface = HighLevelInterface()
-command = np.zeros(10)
-interface.send(command)
-state = interface.receive()
-print(state.tick)
-```
+from numpy import zeros
+from time import perf_counter
 
-#### The structure of commands and replies
-<!-- ADD TABLE WITH MAPPING BETWEEN REPLIES AND COMMANDS -->
+interface = HighLevelInterface()
+command = zeros(10)
+actual_time = 0
+terminal_time = 5
+while actual_time<terminal_time:
+  command[7] = 1
+  interface.send(command)
+  state = interface.receive()
+  print(state.imy.rpy[1])
+```
+you may find the more eloborated examples in the examples/interface/ folder.
 
 ### The Parsers
 
