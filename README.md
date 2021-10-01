@@ -93,6 +93,7 @@ interface = HighLevelInterface()
 command = zeros(10)
 actual_time = 0
 terminal_time = 5
+
 while actual_time<terminal_time:
   command[7] = 1
   interface.send(command)
