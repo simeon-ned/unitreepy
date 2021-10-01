@@ -1,6 +1,6 @@
 <!-- TODO: Write the readme -->
 <!-- ADD THE PICTURE -->
-
+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
 # UnitreePy
 
 UnitreePy is a lightweight python package that facilitate low and high level control of [unitree](https://www.unitree.com/) quadruped robots.
@@ -52,7 +52,7 @@ from pyunitree.legged_sdk import HighLevelInterface
 high_interface = HighLevelInterface()
 high_command = 10*[0]
 
-high_interface.send(high_interface)
+high_interface.send(high_command)
 high_state = high_interface.receive()
 ```
 
@@ -61,7 +61,7 @@ from pyunitree.legged_sdk import LowLevelInterface
 
 low_interface = HighLevelInterface()
 low_command = 60*[0]
-low_interface.send(low_interface)
+low_interface.send(low_command)
 low_state = low_interface.receive()
 ```
 
