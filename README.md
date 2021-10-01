@@ -60,6 +60,7 @@ from pyunitree.legged_sdk import LowLevelInterface
 
 low_interface = HighLevelInterface()
 low_command = 60*[0]
+
 low_interface.send(low_command)
 low_state = low_interface.receive()
 ```
