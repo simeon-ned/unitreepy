@@ -61,6 +61,7 @@ from pyunitree.legged_sdk import LowLevelInterface
 
 low_interface = HighLevelInterface()
 low_command = 60*[0]
+
 low_interface.send(low_command)
 low_state = low_interface.receive()
 ```
@@ -93,6 +94,7 @@ interface = HighLevelInterface()
 command = zeros(10)
 actual_time = 0
 terminal_time = 5
+
 while actual_time<terminal_time:
   command[7] = 1
   interface.send(command)
