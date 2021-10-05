@@ -1,8 +1,7 @@
-from pyunitree.robots import robot
-from pyunitree._utils import leg_kinematics
-from pyunitree._constants import STAND_ANGLES, LEG_NAMES, LEGS_BASES, LEG_LINKS_LENGTH
+from pyunitree.robots.a1 import robot
+from pyunitree.robots.a1.constants import STAND_ANGLES, LEG_NAMES, LEGS_BASES, LEG_LINKS_LENGTH
+from pyunitree.utils import leg_kinematics
 import numpy as np
-
 
 robot.start()
 desired_angles = np.array(STAND_ANGLES)
@@ -10,7 +9,7 @@ robot.move_to(desired_angles)
 t0 = robot.state.time
 
 t = 0
-while t < 10:
+while t < 5:
     t = robot.state.time - t0
     desired_angles = np.array(STAND_ANGLES)*(1 + 0.2 * np.sin(4*t))
     robot.set_angles(desired_angles)

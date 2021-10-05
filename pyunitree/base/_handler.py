@@ -1,16 +1,25 @@
-from ._parsers._low_level import LowLevelParser
-from numpy import zeros, array
-from ._constants import NUM_MOTORS, POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES
+from numpy import array
 from time import perf_counter, sleep
-from ._utils import p2p_cos_profile
 from multiprocessing import Process, Manager
+from types import SimpleNamespace
+
+from ..parsers.low_level import LowLevelParser
+from ..utils._pos_profiles import p2p_cos_profile
+from ..robots._default.constants import POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES
+
+
+CONSTANTS = SimpleNamespace()
+
+CONSTANTS.POSITION_GAINS = POSITION_GAINS
+CONSTANTS.DAMPING_GAINS = DAMPING_GAINS
+CONSTANTS.INIT_ANGLES = INIT_ANGLES
 
 
 class RobotHandler(LowLevelParser):
-    """Creating the Robot Handler.
+    """Creating the Robot Handler
        to bind the specific interface through """
 
-    def __init__(self, update_rate=1000):
+    def __init__(self, update_rate=1000, constants = CONSTANTS):
         LowLevelParser.__init__(self)
         self.update_rate = update_rate
 
@@ -22,8 +31,8 @@ class RobotHandler(LowLevelParser):
         self.__shared.command = self._zero_command
         self.__shared.process_is_working = False 
 
-        self.set_gains(position_gains=POSITION_GAINS,
-                       damping_gains=DAMPING_GAINS)
+        self.set_gains(position_gains=constants.POSITION_GAINS,
+                       damping_gains=constants.DAMPING_GAINS)
 
         self._handler_process = Process(target=self.__handler)
 
@@ -83,7 +92,7 @@ class RobotHandler(LowLevelParser):
         initial_position = array(self.state.joint_angles)
         init_time = perf_counter()
         actual_time = 0
-        desired_position = array(INIT_ANGLES)
+        desired_position = array(CONSTANTS.INIT_ANGLES)
 
         while actual_time <= terminal_time:
             if self.__shared.process_is_working:
@@ -146,7 +155,7 @@ class RobotHandler(LowLevelParser):
 
         return command
 
-    def set_torques(self, desired_torque=zeros(NUM_MOTORS)):
+    def set_torques(self, desired_torque):
         """Build the command from desired torque"""
         command = self.build_command(desired_torque=desired_torque)
         self.__shared.command = command
@@ -187,6 +196,6 @@ class RobotHandler(LowLevelParser):
                 
 
     def move_to_init(self):
-        self.move_to(array(INIT_ANGLES))
+        self.move_to(array(CONSTANTS.INIT_ANGLES))
 
 

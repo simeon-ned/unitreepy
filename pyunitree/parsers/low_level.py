@@ -1,7 +1,5 @@
-from numpy import array
-from .._utils import leg_kinematics
 from numpy import zeros, float32
-from .._constants import NUM_MOTORS, NUM_LEGS, LEG_NAMES, LEGS_BASES, LEG_LINKS_LENGTH
+from ..robots._default.constants import NUM_MOTORS, NUM_LEGS
 
 
 # TODO: Add parsing

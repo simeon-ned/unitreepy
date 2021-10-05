@@ -7,7 +7,7 @@ setuptools.setup(
     name="pyunitree", 
     version="0.0.1",
     author="Simeon Nedelchev",
-    author_email="s.nede@gmail.com",
+    author_email="simkaned@gmail.com",
     description="A package provide parsers and handlers of Unitree robots",
     long_description=long_description,
     # long_description_content_type="text/markdown",

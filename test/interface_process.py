@@ -1,7 +1,7 @@
 from pyunitree.legged_sdk import HighLevelInterface
+from pyunitree.__interface import Interface
 import numpy as np
 from time import perf_counter
-interface = HighLevelInterface()
 
 # /////////////////////////////////
 # The example of High Level Control 
@@ -23,40 +23,24 @@ interface = HighLevelInterface()
 # Roll          | COMMAND[8]    | desired roll angle scale: -1~1 <-> -20~20 [deg]
 # RESERVED      | COMMAND[9] | reserved bytes in command
 
-command = np.zeros(10)
+interface = HighLevelInterface()
 
+
+interface_process = Interface()
+interface_process.bind_interface(interface.receive, interface.send)
+interface_process.start()
 initial_time = perf_counter()
 time_sample = 0
+
+command = np.zeros(10)
 
 while True:
 
     time = (perf_counter() - initial_time)
-    if time - time_sample >= 0.002:
-        # changing the desired orientation
-        command[6] = 0.6*np.sin(time) # yaw
-        command[7] = 0.6*np.sin(2*time) # pitch
-        command[8] = 0.5*np.sin(time/2) # roll 
-        interface.send(command)
-        state = interface.receive()
+    command[6] = 0.6*np.sin(time) # yaw
+    command[7] = 0.6*np.sin(2*time) # pitch
+    command[8] = 0.5*np.sin(time/2) # roll 
+    interface_process.set_command(command)
+    state = interface_process.state
+    print(state)
 
-        # state.mode
-
-        # state.imu.quaternion
-        # state.imu.gyroscope
-        # state.imu.accelerometer
-        # state.imu.rpy 
-
-        # state.forwardSpeed
-        # state.sideSpeed
-        # state.rotateSpeed
-        # state.bodyHeight
-        # state.updownSpeed
-        # state.forwardPosition
-        # state.sidePosition        
-
-        # state.footPosition2Body
-        # state.footSpeed2Body
-
-        # state.footForceEst
-
-        # time_sample = time

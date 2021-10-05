@@ -1,23 +1,25 @@
-from pyunitree._constants import STAND_ANGLES
-from pyunitree._handler import RobotHandler
+from pyunitree.base._handler import RobotHandler
+from pyunitree.robots._build_robot import _build_robot
 from pyunitree.legged_sdk import LowLevelInterface
+from pyunitree.robots.a1.constants import POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES, STAND_ANGLES
+from types import SimpleNamespace
 from numpy import array
 
 
-interface = LowLevelInterface()
+CONSTANTS = SimpleNamespace()
 
-# ////////// BUILDING ROBOT FROM HANDLER AND INTERFACE //////////////
-handler = RobotHandler()
+CONSTANTS.POSITION_GAINS = POSITION_GAINS
+CONSTANTS.DAMPING_GAINS = DAMPING_GAINS
+CONSTANTS.INIT_ANGLES = INIT_ANGLES
+
+# CREATE THE ROBOT 
+interface = LowLevelInterface()
+handler = RobotHandler(constants = CONSTANTS)
 transmitter = interface.send
 receiver = interface.receive
 
-def build_robot(handler, transmitter, receiver):
-    handler.set_transmitter(transmitter)
-    handler.set_receiver(receiver)
-    robot = handler
-    return robot
+robot = _build_robot(handler, transmitter, receiver)
 
-robot = build_robot(handler, transmitter, receiver)
 
 # start robot process and move to initial position
 robot.start()
@@ -25,3 +27,5 @@ desired_angles = array(STAND_ANGLES)
 robot.move_to(desired_angles)
 robot.move_to_init()
 robot.stop()
+
+
