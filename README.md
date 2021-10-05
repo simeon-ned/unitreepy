@@ -63,16 +63,16 @@ high_state = high_interface.receive()
 The **High Level Command** is organized as follows:
 | Index  | Name           | Description                                                    |
 | ------ | -------------- | -------------------------------------------------------------- |
-| COM[0] | Mode           | 0 - idle, 1 - forced stand, 2 - walk continuously              |
-| COM[1] | Forward Speed  | forward/backward speed: (-1,1) : (-0.7,1) (m/s)                |
-| COM[2] | Side Speed     | left/right: (-1,1) :  (-0.4,0.4) (m/s)                         |
-| COM[3] | Rotation Speed | clockwise/anticlockwise: (-1,1) : (-120,120) (deg/s)           |
-| COM[4] | Body Height    | body height: (-1,1) : (0.3,0.45) (m)                           |
-| COM[5] | Foot Height    | foot height while walking : unavailable in this version of SDK |
-| COM[6] | Yaw            | desired yaw angle: (-1,1) : (-28,28) (deg)                     |
-| COM[7] | Pitch          | desired pitch angle: (-1,1) : (-20,20) (deg)                   |
-| COM[8] | Roll           | desired roll angle:  (-1,1) : (-20,20) (deg)                   |
-| COM[9] | RESERVED       | reserved bytes in command                                      |
+| `COM[0]` | Mode           | 0 - idle, 1 - forced stand, 2 - walk continuously              |
+| `COM[1]` | Forward Speed  | forward/backward speed: (-1,1) : (-0.7,1) (m/s)                |
+| `COM[2]` | Side Speed     | left/right: (-1,1) :  (-0.4,0.4) (m/s)                         |
+| `COM[3]` | Rotation Speed | clockwise/anticlockwise: (-1,1) : (-120,120) (deg/s)           |
+| `COM[4]` | Body Height    | body height: (-1,1) : (0.3,0.45) (m)                           |
+| `COM[5]` | Foot Height    | foot height while walking : unavailable in this version of SDK |
+| `COM[6]` | Yaw            | desired yaw angle: (-1,1) : (-28,28) (deg)                     |
+| `COM[7]` | Pitch          | desired pitch angle: (-1,1) : (-20,20) (deg)                   |
+| `COM[8]` | Roll           | desired roll angle:  (-1,1) : (-20,20) (deg)                   |
+| `COM[9]` | RESERVED       | reserved bytes in command                                      |
 
 
 ### Low Level Commands
@@ -93,11 +93,11 @@ low_state = low_interface.receive()
 The **Low Level Command** is organized as array of 60 floats:
 | Index                 | Name          | Description                                     |
 | --------------------- | ------------- | ----------------------------------------------- |
-| COM[MOTOR_ID * 5]     | Position      | Desired position for 'MOTOR ID' (rad)           |
-| COM[MOTOR_ID * 5 + 1] | Position Gain | Desired 'stiffness' gain for 'MOTOR ID' (N/rad) |
-| COM[MOTOR_ID * 5 + 2] | Speed         | Desired speed for 'MOTOR ID' (rad/s)            |
-| COM[MOTOR_ID * 5 + 3] | Speed Gain    | Desired damping gain of 'MOTOR ID' (Ns/rad)     |
-| COM[MOTOR_ID * 5 + 4] | Torque        | Desired feed forward torque of  (N)             |
+| `COM[MOTOR_ID * 5]`     | Position      | Desired position for 'MOTOR ID' (rad)           |
+| `COM[MOTOR_ID * 5 + 1]` | Position Gain | Desired 'stiffness' gain for 'MOTOR ID' (N/rad) |
+| `COM[MOTOR_ID * 5 + 2]` | Speed         | Desired speed for 'MOTOR ID' (rad/s)            |
+| `COM[MOTOR_ID * 5 + 3]` | Speed Gain    | Desired damping gain of 'MOTOR ID' (Ns/rad)     |
+| `COM[MOTOR_ID * 5 + 4]` | Torque        | Desired feed forward torque of  (N)             |
 
 The motors are labeled accordingly to following table:
 
