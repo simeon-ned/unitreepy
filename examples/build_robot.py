@@ -1,10 +1,11 @@
+# EXAMPLE HOW TO BUILD ROBOT FROM INTERFACE AND HANDLER
+
 from pyunitree.base._handler import RobotHandler
 from pyunitree.robots._build_robot import _build_robot
 from pyunitree.legged_sdk import LowLevelInterface
 from pyunitree.robots.a1.constants import POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES, STAND_ANGLES
 from types import SimpleNamespace
 from numpy import array
-
 
 CONSTANTS = SimpleNamespace()
 
@@ -23,8 +24,10 @@ robot = _build_robot(handler, transmitter, receiver)
 
 # start robot process and move to initial position
 robot.start()
+# move to desired angles
 desired_angles = array(STAND_ANGLES)
 robot.move_to(desired_angles)
+# move to initial angles and stop robot process
 robot.move_to_init()
 robot.stop()
 
