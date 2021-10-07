@@ -54,7 +54,7 @@ The robot reply with the following state:
 | `state.footSpeed2Body`    | foot velocity     | the cartesian velocity of each foot with respect to body frame, [v_x, v_y, v_z] (m/s) |
 | `state.footForce`         | foot contact      | The raw data of contact sensor                                                        |
 | `state.footForceEst`      | estimated contact | Filtered data from contact sensor                                                     |
-| `state.tick`              | ticker            | controller ticker in (ms)                                                             |
+| `state.tick`              | ticker            | controller ticker  (ms)                                                               |
 | `state.wirelessRemote`    | wireless remote   | the state of wireless remote                                                          |
 
 ```python

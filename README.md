@@ -43,7 +43,7 @@ sudo python3 setup.py develop
 
 ## The Legged SDK Interface
 
-You may use this package to interface directly with Legged SDK without any additional parsers. For details please follow the short documentation and examples in **examples/legged_sdk/** directory.
+You may use this package to interface directly with Legged SDK without any additional parsers. For details please follow the [short documentation](https://github.com/SimkaNed/unitreepy/blob/main/docs/legged_sdk_interface.md) and examples in **examples/legged_sdk/** directory.
 
 <!-- 
 ### The Parsers
