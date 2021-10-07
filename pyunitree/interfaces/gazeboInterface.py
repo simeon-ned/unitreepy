@@ -1,4 +1,4 @@
-from pyunitree.gazebo.gazeboMsgParser import GazeboMsgParser
+from pyunitree.parsers.gazebo import GazeboMsgParser
 
 import rospy
 from unitree_legged_msgs.msg import LowState,MotorCmd

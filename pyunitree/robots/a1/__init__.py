@@ -1,5 +1,5 @@
-from ...base._handler import RobotHandler
-from ...legged_sdk import LowLevelInterface
+from pyunitree.base._handler import RobotHandler
+from legged_sdk import LowLevelInterface
 from .._build_robot import _build_robot
 from .constants import POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES
 from types import SimpleNamespace
