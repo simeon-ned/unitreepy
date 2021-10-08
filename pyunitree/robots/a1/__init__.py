@@ -15,7 +15,7 @@ CONSTANTS = SimpleNamespace()
 CONSTANTS.POSITION_GAINS = POSITION_GAINS
 CONSTANTS.DAMPING_GAINS = DAMPING_GAINS
 CONSTANTS.INIT_ANGLES = INIT_ANGLES
-
+'''
 # CREATE THE ROBOT 
 interface = LowLevelInterface()
 handler = RobotHandler(constants = CONSTANTS)
@@ -23,3 +23,4 @@ transmitter = interface.send
 receiver = interface.receive
 
 robot = _build_robot(handler, transmitter, receiver)
+'''
