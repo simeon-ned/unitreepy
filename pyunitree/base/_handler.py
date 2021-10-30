@@ -1,12 +1,12 @@
 from numpy import array
 from time import perf_counter, sleep
-from multiprocessing import Process, Manager
+from multiprocessing import Process, Manager, Array
 from types import SimpleNamespace
 
 from ..parsers.low_level import LowLevelParser
 from ..utils._pos_profiles import p2p_cos_profile
 from ..robots._default.constants import POSITION_GAINS, DAMPING_GAINS, INIT_ANGLES
-
+from struct import unpack
 
 CONSTANTS = SimpleNamespace()
 
