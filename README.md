@@ -36,7 +36,7 @@ To do so the following dependencies should be met:
 Then copy the resulting *.so* file to the root of repository and install the package with
 
 ```sh
-sudo python3 setup.py develop
+python -m pip install -e .
 ```
 
 <!-- ## The Basic Usage -->
